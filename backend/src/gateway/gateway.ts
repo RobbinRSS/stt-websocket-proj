@@ -3,7 +3,11 @@ import { MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer } from
 import { subscribe } from "diagnostics_channel";
 import { Server } from "socket.io";
 
-@WebSocketGateway()
+@WebSocketGateway({
+    cors: {
+        origin: ['http://localhost:3000'],
+    }
+})
 export class MyGateWay implements OnModuleInit{
     @WebSocketServer()
     server!: Server;
